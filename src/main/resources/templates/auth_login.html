@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+
+<form name="f" method="POST" action="/process_login" >
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+    <label for="username"> Enter your username: </label>
+    <input type="text" name="username" id="username">
+    <br><br>
+
+    <label for="password"> Enter your password: </label>
+    <input type="password" name="password" id="password">
+    <br><br>
+
+    <input type="submit" value="Login">
+</form>
+<hr/>
+
+<div th:if="${param.error}">
+    <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+</div>
+
+</body>
+</html>
